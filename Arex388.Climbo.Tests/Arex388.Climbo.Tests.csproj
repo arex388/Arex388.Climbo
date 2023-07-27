@@ -5,7 +5,7 @@
 		<Nullable>enable</Nullable>
 		<TargetFramework>net7.0</TargetFramework>
 		<UserSecretsId>b39d15a9-c118-4a03-8593-57e5ad9c1100</UserSecretsId>
-		<Version>1.0.1</Version>
+		<Version>1.0.2</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
