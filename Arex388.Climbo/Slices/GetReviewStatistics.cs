@@ -13,9 +13,21 @@ public sealed class GetReviewStatistics {
 	internal static Response Cancelled => _cancelled ??= new Response {
 		Status = ResponseStatus.Cancelled
 	};
-	internal static Response Failed => _failed ??= new Response {
-		Status = ResponseStatus.Failed
-	};
+	internal static Response Failed(
+		Exception? exception) {
+		if (exception is null) {
+			return _failed ??= new Response {
+				Status = ResponseStatus.Failed
+			};
+		}
+
+		return new Response {
+			Errors = new[] {
+				$"[{exception.GetType().Name}] {exception.Message}"
+			},
+			Status = ResponseStatus.Failed
+		};
+	}
 	internal static Response TimedOut => _timedOut ??= new Response {
 		Status = ResponseStatus.TimedOut
 	};
@@ -34,6 +46,11 @@ public sealed class GetReviewStatistics {
 	/// <c>GetReviewStatistics</c> response container.
 	/// </summary>
 	public sealed class Response {
+		/// <summary>
+		/// The response's errors, if any.
+		/// </summary>
+		public IEnumerable<string> Errors { get; init; } = Enumerable.Empty<string>();
+
 		/// <summary>
 		/// List of statistics.
 		/// </summary>

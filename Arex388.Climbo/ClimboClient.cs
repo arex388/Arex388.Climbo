@@ -82,8 +82,6 @@ public sealed class ClimboClient :
 		try {
 			var response = await _httpClient.DeleteAsync($"{_endpointHost}/{request.GetEndpoint()}", cancellationToken).ConfigureAwait(false);
 
-			Console.Write(response);
-
 			return new DeleteReviewInvitation.Response {
 				Status = response.IsSuccessStatusCode
 					? ResponseStatus.Succeeded
@@ -91,8 +89,8 @@ public sealed class ClimboClient :
 			};
 		} catch (TaskCanceledException) {
 			return DeleteReviewInvitation.TimedOut;
-		} catch {
-			return DeleteReviewInvitation.Failed;
+		} catch (Exception e) {
+			return DeleteReviewInvitation.Failed(e);
 		}
 	}
 
@@ -141,8 +139,8 @@ public sealed class ClimboClient :
 			};
 		} catch (TaskCanceledException) {
 			return GetReviewInvitation.TimedOut;
-		} catch {
-			return GetReviewInvitation.Failed;
+		} catch (Exception e) {
+			return GetReviewInvitation.Failed(e);
 		}
 	}
 
@@ -174,8 +172,8 @@ public sealed class ClimboClient :
 			};
 		} catch (TaskCanceledException) {
 			return GetReviewStatistics.TimedOut;
-		} catch {
-			return GetReviewStatistics.Failed;
+		} catch (Exception e) {
+			return GetReviewStatistics.Failed(e);
 		}
 	}
 
@@ -206,18 +204,9 @@ public sealed class ClimboClient :
 		}
 
 		try {
-			var json = JsonSerializer.Serialize(request, _jsonSerializerOptions);
-
-			Console.Write(new {
-				json
-			});
-
-			var response = await _httpClient.PutAsJsonAsync($"{_endpointHost}/{request.GetEndpoint()}", request, _jsonSerializerOptions, cancellationToken).ConfigureAwait(false);
-
-			Console.Write(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
-
+			var response = await _httpClient.PutAsJsonAsync($"{_endpointHost}/review/invitation", request, _jsonSerializerOptions, cancellationToken).ConfigureAwait(false);
 			var content = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-			var reviewInvitation = await JsonSerializer.DeserializeAsync<ReviewInvitation>(content, JsonSerializerOptions.Default, cancellationToken).ConfigureAwait(false);
+			var reviewInvitation = await JsonSerializer.DeserializeAsync<ReviewInvitation>(content, _jsonSerializerOptions, cancellationToken).ConfigureAwait(false);
 
 			return new PutReviewInvitation.Response {
 				ReviewInvitation = reviewInvitation!,
@@ -225,8 +214,8 @@ public sealed class ClimboClient :
 			};
 		} catch (TaskCanceledException) {
 			return PutReviewInvitation.TimedOut;
-		} catch {
-			return PutReviewInvitation.Failed;
+		} catch (Exception e) {
+			return PutReviewInvitation.Failed(e);
 		}
 	}
 }

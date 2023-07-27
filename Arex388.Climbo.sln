@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arex388.Climbo.Benchmarks", "Arex388.Climbo.Benchmarks\Arex388.Climbo.Benchmarks.csproj", "{AB93A883-B810-4DAF-8CAE-084B675ACDE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arex388.Climbo.Tests", "Arex388.Climbo.Tests\Arex388.Climbo.Tests.csproj", "{9C2A5341-E821-477A-BFAC-B7A91DCBF7C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,14 @@ Global
 		{B8105DB6-9B3B-4BB8-ABBF-845A4AFB53BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8105DB6-9B3B-4BB8-ABBF-845A4AFB53BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8105DB6-9B3B-4BB8-ABBF-845A4AFB53BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB93A883-B810-4DAF-8CAE-084B675ACDE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB93A883-B810-4DAF-8CAE-084B675ACDE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB93A883-B810-4DAF-8CAE-084B675ACDE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB93A883-B810-4DAF-8CAE-084B675ACDE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C2A5341-E821-477A-BFAC-B7A91DCBF7C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C2A5341-E821-477A-BFAC-B7A91DCBF7C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C2A5341-E821-477A-BFAC-B7A91DCBF7C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C2A5341-E821-477A-BFAC-B7A91DCBF7C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

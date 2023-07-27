@@ -31,7 +31,7 @@ public static class ServiceCollectionExtensions {
 	public static IServiceCollection AddClimbo(
 		this IServiceCollection services,
 		string apiKey,
-		AccountId accountId) => services.AddSingleton(
+		AccountId accountId) => services.AddSingleton<IClimboClient>(
 		_ => {
 			var httpClientFactory = _.GetRequiredService<IHttpClientFactory>();
 			var httpClient = httpClientFactory.CreateClient(nameof(ClimboClient));

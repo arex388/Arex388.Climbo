@@ -20,16 +20,16 @@ public sealed class ReviewInvitation {
 	public string Name { get; init; } = null!;
 
 	/// <summary>
-	/// The review invitation's retry attempts if the review link is not used. Zero (0) by default. Three (3) maximum.
+	/// The review invitation's retry attempts if the review link is not used.
 	/// </summary>
 	[JsonPropertyName("retry")]
 	public byte RetryAttempts { get; init; }
 
 	/// <summary>
-	/// The review invitation's scheduled send timestamp in UTC.
+	/// The review invitation's scheduled send timestamp.
 	/// </summary>
 	[JsonPropertyName("send_datetime")]
-	public string SendAtUtc { get; init; } = null!;
+	public string SendAt { get; init; } = null!;
 
 	/// <summary>
 	/// The review invitation's status.
@@ -38,11 +38,7 @@ public sealed class ReviewInvitation {
 	public ReviewInvitationStatus Status { get; init; }
 
 	/// <summary>
-	/// The review invitation's custom email template. Built-in account template by default.
-	/// 
-	/// - "subject" - The email's subject.
-	/// - "html" - The email's HTML content.
-	/// - "text" - The email's text content.
+	/// The review invitation's email template.
 	/// </summary>
 	public IDictionary<string, string> Template { get; init; } = null!;
 
