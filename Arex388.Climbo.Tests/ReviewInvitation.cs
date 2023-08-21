@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Xunit;
+﻿using Xunit;
 
 namespace Arex388.Climbo.Tests;
 
@@ -8,15 +7,14 @@ public sealed class ReviewInvitation {
 	private readonly PutReviewInvitation.Request _putRequest;
 
 	public ReviewInvitation() {
-		var configuration = new ConfigurationBuilder().AddUserSecrets<IAssemblyMarker>().Build();
 		var httpClient = new HttpClient();
 
-		httpClient.DefaultRequestHeaders.Add("x-api-key", configuration["ClimboKey"]!);
+		httpClient.DefaultRequestHeaders.Add("x-api-key", Config.ClimboKey);
 
-		_climbo = new ClimboClient(new AccountId(configuration["ClimboAccountId-1"]!), httpClient);
+		_climbo = new ClimboClient(Config.ClimboAccountId1, httpClient);
 		_putRequest = new PutReviewInvitation.Request {
-			Email = configuration["RecepientEmail"]!,
-			Name = configuration["RecepientName"]!,
+			Email = Config.RecipientEmail,
+			Name = Config.RecipientName,
 			SendAt = DateTimeOffset.Now.AddMinutes(1)
 		};
 	}

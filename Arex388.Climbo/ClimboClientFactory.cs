@@ -35,14 +35,14 @@ public sealed class ClimboClientFactory :
 	public IClimboClient CreateClient(
 		string apiKey,
 		AccountId accountId) {
-		var key = $"{nameof(Climbo)}.Key[{accountId}]";
+		var key = $"{nameof(Arex388)}.{nameof(Climbo)}.Key[{accountId}]";
 
 		if (_memoryCache.TryGetValue(key, out IClimboClient? climboClient)
 			&& climboClient is not null) {
 			return climboClient;
 		}
 
-		var httpClient = _httpClientFactory.CreateClient($"{nameof(ClimboClient)}.Key[{accountId}]");
+		var httpClient = _httpClientFactory.CreateClient(key);
 
 		httpClient.DefaultRequestHeaders.Add("x-api-key", apiKey);
 

@@ -3,6 +3,9 @@ using System.Text.Json.Serialization;
 
 namespace Arex388.Climbo;
 
+/// <summary>
+/// ReviewInvitation object.
+/// </summary>
 public sealed class ReviewInvitation {
 	/// <summary>
 	/// The review invitation's recepient's email.

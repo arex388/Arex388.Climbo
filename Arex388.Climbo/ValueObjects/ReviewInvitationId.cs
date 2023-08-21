@@ -1,6 +1,8 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
+#pragma warning disable CS1591
+
 namespace Arex388.Climbo;
 
 /// <summary>

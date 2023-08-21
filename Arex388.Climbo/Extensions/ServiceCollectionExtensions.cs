@@ -14,9 +14,9 @@ public static class ServiceCollectionExtensions {
 	/// <returns>The service collection.</returns>
 	public static IServiceCollection AddClimbo(
 		this IServiceCollection services) => services.AddSingleton<IClimboClientFactory>(
-		_ => {
-			var httpClientFactory = _.GetRequiredService<IHttpClientFactory>();
-			var memoryCache = _.GetRequiredService<IMemoryCache>();
+		@if => {
+			var httpClientFactory = @if.GetRequiredService<IHttpClientFactory>();
+			var memoryCache = @if.GetRequiredService<IMemoryCache>();
 
 			return new ClimboClientFactory(httpClientFactory, memoryCache);
 		});
@@ -32,8 +32,8 @@ public static class ServiceCollectionExtensions {
 		this IServiceCollection services,
 		string apiKey,
 		AccountId accountId) => services.AddSingleton<IClimboClient>(
-		_ => {
-			var httpClientFactory = _.GetRequiredService<IHttpClientFactory>();
+		@if => {
+			var httpClientFactory = @if.GetRequiredService<IHttpClientFactory>();
 			var httpClient = httpClientFactory.CreateClient(nameof(ClimboClient));
 
 			httpClient.DefaultRequestHeaders.Add("x-api-key", apiKey);

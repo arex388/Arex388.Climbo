@@ -17,5 +17,6 @@ internal sealed class ReviewInvitationStatusJsonConverter :
 	public override void Write(
 		Utf8JsonWriter writer,
 		ReviewInvitationStatus value,
-		JsonSerializerOptions options) => throw new NotImplementedException("You should never see this exception.");
+		JsonSerializerOptions options) {
+	}
 }
